@@ -17,14 +17,14 @@ services:
     env_file:
       - .env
     networks:
-      - backend
+      - docker-network
     depends_on:
       - postgres
   postgres:
     container_name: trabalho_bd
     image: postgres:13-alpine
     networks:
-      - backend
+      - docker-network
     expose:
       - 5432
     ports:
@@ -37,6 +37,6 @@ services:
     volumes:
       - api_db_data:/var/lib/postgresql/data
 networks:
-  backend:
+  docker-network:
 volumes:
   api_db_data:
